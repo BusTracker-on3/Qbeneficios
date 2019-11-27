@@ -10,4 +10,8 @@ module.exports = function(application){
     application.get('/remove_collaborator', function(request, response){
         application.src.controllers.collaboratorController.remove_collaborator(application, request, response);
     });
+
+    application.get('/remove', function(request, response){
+        application.src.controllers.collaboratorController.delete(application, request, response);
+    });
 }

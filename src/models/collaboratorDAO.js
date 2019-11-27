@@ -35,6 +35,14 @@ CollaboratorDAO.prototype.getCollaborator_by_id = function(id, response){
     });
 }
 
+CollaboratorDAO.prototype.removeCollaborator = function(id, response){
+    this._request.db.collection("Collaborators", function(error, collection){
+        collection.remove({'_id': ObjectId(id)}, function(errors, result){
+            response.redirect('/');
+        });
+    });
+}
+
 module.exports = function(){
     return CollaboratorDAO;
 }

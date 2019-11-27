@@ -5,25 +5,26 @@ class HomeDAO {
 }
 
 HomeDAO.prototype.get_highest_salary = function(response){
+    var temp = [];
     this._request.db.collection("Collaborators", function(error, collection){
         collection.aggregate([
             {
                 '$group': {'_id': 1, 'salary': {'$max': "$salary"}, 'count': {'$sum': 1}}
             }
         ]).toArray(function(error, result){
-            response.render('home/index', {message: '', flag: '', collaborator: result});
+            temp.push(result);
         });
     });
 
-
-/*        collection.find().sort({'salary':-1}).limit(1).toArray(function(error, result){
-
-            response.render('home/index', {message: '', flag: '', collaborator: result});
+    this._request.db.collection("Roles", function(err, coll){
+        coll.aggregate([
+            {
+                '$group': {'_id': 1, 'count': {'$sum': 1}}
+            }
+        ]).toArray(function(er, res){
+            response.render('home/index', {message: '', flag: '', collaborator: temp[0], role: res});
         });
     });
-*/
-//    response.render('home/index', {message: '', flag: '', collaborator: highest_salary, count: count_collaborator});
-
 }
 
 module.exports = function(){

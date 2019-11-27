@@ -15,9 +15,15 @@ module.exports.register_collaborator = function(application, request, response){
     var collaboratorDAO = new application.src.models.collaboratorDAO(request);
     collaboratorDAO.insertCollaborator(id, formData);
     response.redirect('/');
-    //, {message: 'Colaborador Cadastrado com Sucesso!', flag: 'colab'}
 }
 
 module.exports.remove_collaborator = function(application, request, response){
     response.render('forms/remove_collaborator', {list: []});
+}
+
+module.exports.delete = function(application, request, response){
+    var id = request.query.id;
+
+    var collaboratorDAO = new application.src.models.collaboratorDAO(request);
+    collaboratorDAO.removeCollaborator(id, response);
 }

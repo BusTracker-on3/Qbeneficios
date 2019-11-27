@@ -187,15 +187,20 @@
                     <div class="ecommerce-widget">
 
                         <div class="row">
-                            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="card">
                                     <div class="card-body">
                                         <h5 class="text-muted">Maior Salário</h5>
                                         <div class="metric-value d-inline-block">
-                                            <% if(collaborator.length > 0) { %>
-                                                <h1 class="mb-1">R$: <%= collaborator[0].salary %></h1>
-                                            <% } else { %>
+                                            <% if(collaborator === undefined) { %>
                                                 <h1 class="mb-1">R$: 0</h1>
+                                            <% } else { %>
+                                                <% if(collaborator.length > 0) { %>
+                                                    <h1 class="mb-1">R$: <%= collaborator[0].salary %></h1>
+                                                <% } else { %>
+                                                    <h1 class="mb-1">R$: 0</h1>
+                                                <% } %>
+                                                
                                             <% } %>
                                         </div>
                                         <div class="metric-label d-inline-block float-right text-success font-weight-bold">
@@ -211,8 +216,31 @@
                                     <div class="card-body">
                                         <h5 class="text-muted">Quantidade de Colaboradores</h5>
                                         <div class="metric-value d-inline-block">
-                                            <% if(collaborator.length > 0) { %>
-                                                <h1 class="mb-1"> <%= collaborator[0].count %></h1>
+                                            <% if(collaborator === undefined) { %>
+                                                <h1 class="mb-1">R$: 0</h1>
+                                            <% } else { %>
+                                                <% if(collaborator.length > 0) { %>
+                                                    <h1 class="mb-1"> <%= collaborator[0].count %></h1>
+                                                <% } else { %>
+                                                    <h1 class="mb-1"> 0 </h1>
+                                                <% } %>
+                                            <% } %>
+                                        </div>
+                                        <div class="metric-label d-inline-block float-right text-success font-weight-bold">
+                                            <span><i class="fa fa-fw fa-arrow-up"></i></span><span></span>
+                                        </div>
+                                    </div>
+                                    <div id="sparkline-revenue2"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-muted">Quantidade de Cargos</h5>
+                                        <div class="metric-value d-inline-block">
+                                            <% if(role.length > 0) { %>
+                                                <h1 class="mb-1"> <%= role[0].count %></h1>
                                             <% } else { %>
                                                 <h1 class="mb-1"> 0 </h1>
                                             <% } %>
@@ -224,6 +252,7 @@
                                     <div id="sparkline-revenue2"></div>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 

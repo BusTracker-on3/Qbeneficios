@@ -80,10 +80,10 @@
                                             <a class="nav-link" href="update_collaborator">Colaborador</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="register_career_path">Plano de Carreira</a>
+                                            <a class="nav-link" href="#">Plano de Carreira</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="register_role">Cargo</a>
+                                            <a class="nav-link" href="#">Cargo</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -223,33 +223,33 @@
                                                 <td><%= list[i].cep %></td>
                                                 <td><%= list[i].city %></td>
                                                 <td><%= list[i].rg %></td>
-                                                <td><a data-toggle="modal" data-target="#ModalRemoveCollab" href="#">REMOVER</a></td>
+                                                <td><a data-toggle="modal" data-target="#ModalRemoveCollab" href="#" style="color: blue;">REMOVER</a></td>
                                             </tr>
+                                            <div id="ModalRemoveCollab" class="modal fade">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Aviso</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="lead text-xs-center">Você realmente deseja excluir esse colaborador? </p>
+                                                        
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="lead text-xs-center">
+                                                                <a class="btn btn-info" href="/remove?id=<%= list[i]._id %>">Sim</a>
+                                                                <a class="btn btn-success" data-dismiss="modal" href="#">Não</a>
+                                                            </div>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
                                         <% } %>
                                     </tbody>
                                 </table>
                             </div>
                         <% } %>
-                    </div>
-
-                    <div id="ModalRemoveCollab" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Aviso</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <p class="lead text-xs-center">Você realmente deseja excluir esse colaborador? </p>
-                                
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="lead text-xs-center"><a class="btn btn-info" href="/auth/register">Create Account</a> or
-                                        <a class="btn btn-success" href="/auth/login">Sign In</a></div>
-                                </div>
-                            </div><!-- /.modal-content -->
-                        </div><!-- /.modal-dialog -->
-                    </div><!-- /.modal -->
-                            
+                    </div>                            
             </div>
             <div class="footer">
                 <div class="container-fluid">
